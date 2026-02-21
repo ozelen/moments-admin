@@ -1,17 +1,25 @@
+import { useRouteLoaderData } from "react-router";
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
 
-export function meta({}: Route.MetaArgs) {
+export function meta() {
 	return [
-		{ title: "New React Router App" },
-		{ name: "description", content: "Welcome to React Router!" },
+		{ title: "Moments Admin" },
+		{ name: "description", content: "Photo platform admin" },
 	];
 }
 
-export function loader({ context }: Route.LoaderArgs) {
-	return { message: context.cloudflare.env.VALUE_FROM_CLOUDFLARE };
-}
+export default function Home() {
+	const data = useRouteLoaderData("root") as { user: { firstName: string | null; email: string | null } } | undefined;
+	const user = data?.user;
 
-export default function Home({ loaderData }: Route.ComponentProps) {
-	return <Welcome message={loaderData.message} />;
+	return (
+		<div>
+			<h1 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+				Welcome{user?.firstName ? `, ${user.firstName}` : ""}
+			</h1>
+			<p className="text-gray-600 dark:text-gray-400">
+				Moments admin dashboard. Manage albums, photos, and more.
+			</p>
+		</div>
+	);
 }

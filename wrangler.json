@@ -1,14 +1,21 @@
 {
-	"$schema": "./node_modules/wrangler/config-schema.json",
-	"name": "moments-admin",
-	"main": "./workers/app.ts",
-	"compatibility_date": "2025-10-08",
-	"compatibility_flags": ["nodejs_compat"],
-	"observability": {
-		"enabled": true
-	},
-	"upload_source_maps": true,
-	"vars": {
-		"VALUE_FROM_CLOUDFLARE": "Moments Admin"
-	}
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "moments-admin",
+  "main": "./workers/app.ts",
+  "compatibility_date": "2025-10-08",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "moments-db",
+      "database_id": "REPLACE_AFTER_wrangler_d1_create",
+      "migrations_dir": "../moments/db/migrations"
+    }
+  ],
+  "r2_buckets": [
+    { "binding": "R2_MEDIA", "bucket_name": "moments-media" }
+  ],
+  "observability": { "enabled": true },
+  "upload_source_maps": true,
+  "vars": { "VALUE_FROM_CLOUDFLARE": "Moments Admin", "SESSION_SECRET": "dev-secret-change-in-production" }
 }
