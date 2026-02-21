@@ -65,9 +65,17 @@ export default function App() {
 				<nav className="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<div className="flex justify-between h-14 items-center">
-							<a href="/" className="font-semibold text-gray-900 dark:text-white">
-								Moments Admin
-							</a>
+							<div className="flex items-center gap-6">
+								<a href="/" className="font-semibold text-gray-900 dark:text-white">
+									Moments Admin
+								</a>
+								<a
+									href="/albums"
+									className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+								>
+									Albums
+								</a>
+							</div>
 							<div className="flex items-center gap-4">
 								<span className="text-sm text-gray-600 dark:text-gray-400">
 									{user.firstName ?? user}
