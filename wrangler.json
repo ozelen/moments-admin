@@ -8,7 +8,7 @@
     {
       "binding": "DB",
       "database_name": "moments-db",
-      "database_id": "REPLACE_AFTER_wrangler_d1_create",
+      "database_id": "dc802a53-1066-4552-8621-fecc2a7035aa",
       "migrations_dir": "../moments/db/migrations"
     }
   ],
